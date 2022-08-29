@@ -99,6 +99,8 @@ Hello {{ something }}
 ```
 {{ something | default('world') }}
 {{ my_list | sort | join(',') }}
+{{ '192.0.2.0' | ipaddr }}
+{{ myvar | ipv4 }}
 ```
 ![width:600px](./filters.png)
 
@@ -195,11 +197,13 @@ https://docs.ansible.com/ansible/latest/user_guide/playbooks_templating.html
 
 https://jinja.palletsprojects.com/en/3.1.x/templates/#id11
 
+https://docs.ansible.com/ansible/latest/collections/ansible/builtin/template_module.html
+
 ---
 
 ## Task
-Create a simple playbook or role to template the sshd_config on one of your sandbox systems - ansible01 (and have some fun with it)
-https://docs.ansible.com/ansible/latest/collections/ansible/builtin/template_module.html
+Create a simple playbook or role to template the sshd_config on one of your sandbox systems based on the Ansible builtin template module below
+
 
 ```yaml
 - name: Update sshd configuration safely, avoid locking yourself out
