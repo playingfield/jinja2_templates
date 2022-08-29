@@ -67,15 +67,15 @@ print(template.render(something="World"))
 #### playbook
 ```yaml
 ---
-- name: hello world
+- name: Hello world
   hosts: all
   vars:
     something: world
 
   tasks:
-  - name: show templating results
-    ansible.builtin.debug:
-      msg: "{{ lookup('template', './some_template.j2') }}"
+    - name: Show templating results
+      ansible.builtin.debug:
+        msg: "{{ lookup('template', './some_template.j2') }}"
 
 ```
 #### template file 
@@ -97,6 +97,7 @@ Hello {{ something | upper }}
 ## Filters
 ![width:600px](./filters.png)
 ```
+{{ something | default('world') }}
 {{ my_list | sort | join(',') }}
 ```
 
