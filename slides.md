@@ -1,8 +1,15 @@
 ---
+/**
+ * @theme foobar
+ * @size 4:3 960px 720px
+ * @size 16:9 1280px 720px
+ * @size 4K 3840px 2160px
+ */
 marp: true
 author: Robert D. McDonnell
 size: 4:3
 theme: gaia
+class: lead
 title: Ansible Templating
 header: Ansible Templating - Codemonkeys 2022
 
@@ -11,9 +18,10 @@ header: Ansible Templating - Codemonkeys 2022
 <style>
 
 section {
-
-  background: blue;
-  color: white;
+  width: 960px;
+  height: 720px;
+  background: white;
+  color: black;
 }
 footer {
     position: absolute;
@@ -78,7 +86,7 @@ print(template.render(something="World"))
         msg: "{{ lookup('template', './some_template.j2') }}"
 
 ```
-#### template file 
+#### template file
 ```
 Hello {{ something }}
 ```
@@ -157,8 +165,8 @@ Tip: watch out to manage whitespace around control structures {%-, {%+, -%}, +%}
 - name: show templating results
   debug:
     msg: "{{ lookup('template', './some_template.j2') }}"
-```    
-variable from lookup 
+```
+variable from lookup
 
 ```yaml
 vars:
@@ -167,7 +175,7 @@ tasks:
   - debug:
       msg: "motd value is {{ motd_value }}"
 
-```      
+```
 ---
 Dig lookup in a loop
 ```yaml
@@ -186,7 +194,7 @@ URL lookup in a loop
     msg="{{item}}"
   loop: "{{ lookup('ansible.builtin.url', 'https://github.com/gremlin.keys', wantlist=True) }}"
 
-```  
+```
 
 ---
 ## Documentation
